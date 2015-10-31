@@ -84,26 +84,26 @@
         }
     }
     
-    NSDate * date = [NSDate date];
-    static NSTimeInterval const timeWindow = 0.1f; //时间窗口, 这个值可能会影响到自动调节刷新频率的效果
+//    NSDate * date = [NSDate date];
+//    static NSTimeInterval const timeWindow = 0.1f; //时间窗口, 这个值可能会影响到自动调节刷新频率的效果
     for (NSInteger i = 0; i < _waitingSpirits.count; i++) { // 等待队列
         BarrageSpirit * spirit = [_waitingSpirits objectAtIndex:i];
-        NSTimeInterval overtime = [date timeIntervalSinceDate:_startTime] - pausedDuration - spirit.delay;
-        if (overtime >= 0) {
-            if (overtime < timeWindow) {
+//        NSTimeInterval overtime = [date timeIntervalSinceDate:_startTime] - pausedDuration - spirit.delay;
+//        if (overtime >= 0) {
+//            if (overtime < timeWindow) {
                 if ([self shouldActiveSpirit:spirit]) {
                     [self activeSpirit:spirit];
                     [_activeSpirits addObject:spirit];
                 }
-            }
-            else
-            {// 需要将过期的精灵直接放到_deadSpirits中;
-                if (_cacheDeadSpirits) {
-                    [_deadSpirits addObject:spirit];
-                }
-            }
+//            }
+//            else
+//            {// 需要将过期的精灵直接放到_deadSpirits中;
+//                if (_cacheDeadSpirits) {
+//                    [_deadSpirits addObject:spirit];
+//                }
+//            }
             [_waitingSpirits removeObjectAtIndex:i--];
-        }
+//        }
     }
 }
 
